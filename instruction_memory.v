@@ -6,7 +6,7 @@ module instruction_memory(
     output [31:0] rd
     );
     
-    initial $readmemb("file_name", reg_name);
+    initial $readmemb("loadProgram.txt", reg_name);
     reg [31:0] reg_name [63:0];
     
     assign rd = reg_name[a];

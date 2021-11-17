@@ -3,9 +3,9 @@
 module RF(
     input clk, //Clock signal
     input we3, //Write Enable 
-    input [4:0] a1, //adress 1
-    input [4:0] a2, //adress 2
-    input [4:0] a3, //adress 3
+    input [4:0] a1, //Adress port 1
+    input [4:0] a2, //Adress port 2
+    input [4:0] a3, //Adress port 3
     input [31:0] wd3, //Write Data
     input rst,
     

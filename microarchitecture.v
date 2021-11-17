@@ -4,23 +4,24 @@
 `include "ALU_RISCV.v"
 `include "RF.v"
 
-module microarchitecture();
+module microarchitecture(
+    input cls,
+    input rst
+);
 
-    wire [31:0] instr;
-    wire clk;
-    wire rst;
+    wire [31:0] instr; //All instruction
     
-    wire we3;
+    wire we3; 
     assign we3 = instr[29] | instr [28];
     
-    wire [31:0] rd1;
-    wire [31:0] rd2;
-    reg [31:0] wd3;
+    wire [31:0] rd1; //Read data from RF port 1
+    wire [31:0] rd2; //Read data from RF port 2
+    reg [31:0] wd3; //Write data from RF port 3
     
-    reg [7:0] pc;
+    reg [7:0] pc; //Register for Program Counter
     
-    wire [31:0] aluResult;
-    wire flag;
+    wire [31:0] aluResult; //ALU result
+    wire flag; //ALU flag
    
     
     wire [1:0] pcOp;
@@ -55,6 +56,7 @@ module microarchitecture();
     assign wdOp = instr[29:28];
     wire [31:0] seConst = {{24{instr[12]}}, instr[12:5]}; // <--- SE block realization
     
+    //Multiplexor for write register file
     always @ (*) begin
         case(wdOp)
             2'b10: begin assign wd3 = aluResult; end
