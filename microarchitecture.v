@@ -5,14 +5,15 @@
 `include "RF.v"
 
 module microarchitecture(
-    input cls,
+    input clk,
     input rst
 );
 
     wire [31:0] instr; //All instruction
-    
+
+    //Write enable
     wire we3; 
-    assign we3 = instr[29] | instr [28];
+    assign we3 = instr[29] | instr [28]; 
     
     wire [31:0] rd1; //Read data from RF port 1
     wire [31:0] rd2; //Read data from RF port 2
@@ -25,7 +26,7 @@ module microarchitecture(
    
     
     wire [1:0] pcOp;
-    assign pcOp = ((flag & instr[30])) | instr[31];
+    assign pcOp = (flag & instr[30]) | instr[31];
     reg [31:0] pcInput;
     
     //Work with program counter
@@ -61,6 +62,7 @@ module microarchitecture(
         case(wdOp)
             2'b10: begin assign wd3 = aluResult; end
             2'b11: begin assign wd3 = seConst; end
+            default:begin wd3 = seConst; end
         endcase
     end
     
