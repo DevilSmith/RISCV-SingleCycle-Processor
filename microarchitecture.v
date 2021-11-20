@@ -7,6 +7,7 @@
 module microarchitecture(
     input clk,
     input rst,
+    input [31:0] sw,
 
     output [31:0] out
 );
@@ -28,7 +29,6 @@ module microarchitecture(
 
     assign out = aluResult[31:0];
    
-    
     wire [1:0] pcOp;
     assign pcOp = ((flag & instr[30])) | instr[31];
     reg [7:0] pcInput;
@@ -42,13 +42,13 @@ module microarchitecture(
     end
     
     //Increase program counter
-    always @ (posedge clk) begin
-        pc <= pc + pcInput;
-    end
-
-    //Reset program counter
-    always @ (posedge rst) begin
-        pc <= 0;
+    always @ (posedge clk | rst) begin
+        if (rst) begin
+            pc <= 0;
+        end
+        else begin
+            pc <= pc + pcInput;
+        end
     end
     
     //Instantiation of modules ALU, RF, Instruction memory
@@ -58,12 +58,13 @@ module microarchitecture(
     
     //Work with write data
     wire [1:0] wdOp = instr[29:28];
-    wire [31:0] seConst = {{24{instr[12]}}, instr[12:5]}; // <--- SE block realization
+    wire [31:0] seConst = {{9{instr[27]}}, instr[27:5]}; //SE 
     
     //Multiplexor for write register file
     always @ (*) begin
         case(wdOp)
-            2'd1: begin assign wd3 = aluResult; end
+            2'd1: begin assign wd3 = sw; end
+            2'd3: begin assign wd3 = aluResult; end
             2'd2: begin assign wd3 = seConst; end
         endcase
     end

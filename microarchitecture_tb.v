@@ -3,6 +3,8 @@
 
 module microarchitecture_tb();
 
+    reg [31:0] sw = 32'd0;
+
     reg clk = 1'b1;
     always #1 clk = !clk;
 
@@ -10,12 +12,16 @@ module microarchitecture_tb();
     
     wire [31:0] out;
 
-    microarchitecture microarchitecture(clk, rst, out);
+    microarchitecture microarchitecture(clk, rst, sw, out);
 
     initial begin
+        rst = 1'b1;
+        #10
         rst = 1'b0;
-        $dumpfile("microarchitecture_tb.vcd");
+        $dumpfile("RESULT.vcd");
         $dumpvars;
-        #128 $finish;
+        #300 
+        $display("Result: ",out);
+        $finish;
     end
 endmodule
