@@ -1,3 +1,9 @@
+# RISC-V Single cycle mini processor
+
+## Microarchitecutre:
+![Screenshot](Documentation/Images/microarchitecture.png)
+
+## Factorial program realisation:
 
 PC     B C WS ALUop  RA1   RA2   const    WA
        ---------------------------------------
