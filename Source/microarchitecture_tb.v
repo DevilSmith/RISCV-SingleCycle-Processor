@@ -3,7 +3,7 @@
 
 module microarchitecture_tb();
 
-    reg [31:0] sw = 32'd13;
+    reg [31:0] sw = 32'd5;
 
     reg clk = 1'b1;
     always #1 clk = !clk;
