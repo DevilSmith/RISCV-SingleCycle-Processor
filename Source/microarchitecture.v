@@ -42,7 +42,7 @@ module microarchitecture(
     end
     
     //Increase program counter
-    always @ (posedge clk | rst) begin
+    always @ (posedge clk or posedge rst) begin
         if (rst) begin
             pc <= 0;
         end

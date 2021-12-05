@@ -3,7 +3,7 @@
 
 module microarchitecture_tb();
 
-    reg [31:0] sw = 32'd0;
+    reg [31:0] sw = 32'd13;
 
     reg clk = 1'b1;
     always #1 clk = !clk;
@@ -20,8 +20,8 @@ module microarchitecture_tb();
         rst = 1'b0;
         $dumpfile("RESULT.vcd");
         $dumpvars;
-        #300 
-        $display("Result: ",out);
+        #4000
+        $display("Result: ", out);
         $finish;
     end
 endmodule
