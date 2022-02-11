@@ -1,6 +1,6 @@
 # RISC-V Single cycle mini processor
 
-## Microarchitecutre:
+## Microarchitecture:
 ![Screenshot](Documentation/Images/microarchitecture.png)
 
 ## Factorial program realisation:
