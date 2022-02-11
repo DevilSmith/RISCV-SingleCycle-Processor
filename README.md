@@ -1,4 +1,4 @@
-# RISC-V Single cycle mini processor
+# RISC-V Single cycle processor (Development in progress)
 
 ## Microarchitecture:
 ![Screenshot](Documentation/Images/microarchitecture.png)
