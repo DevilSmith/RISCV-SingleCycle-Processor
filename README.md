@@ -1,4 +1,5 @@
 # RISC-V Single cycle processor (Development in progress)
+Основано на материалах курса МПСИС: https://github.com/MPSU
 
 ## Microarchitecture:
 ![Screenshot](Documentation/Images/microarchitecture.png)
