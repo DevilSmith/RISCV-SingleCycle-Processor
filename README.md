@@ -4,7 +4,7 @@
 ## Microarchitecture:
 ![Screenshot](Documentation/Images/microarchitecture.png)
 
-## Factorial program realisation:
+## Factorial program realization:
 
 ```
 PC     B C WS ALUop  RA1   RA2   const    WA
